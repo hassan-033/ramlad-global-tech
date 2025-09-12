@@ -1,59 +1,62 @@
-/* Custom Variables */
+/* Custom Variables - Updated to Blue Dominant Theme */
 :root {
-  --primary-yellow: #ffd700;
-  --primary-blue: #003366;
-  --light-gray: #f8f9fa;
-  --medium-gray: #6c757d;
-  --dark-gray: #343a40;
+  --primary-blue: #1E3A8A; /* Deep blue as primary */
+  --secondary-blue: #3B82F6; /* Lighter blue for accents */
+  --accent-yellow: #FCD34D; /* Yellow as accent color */
+  --light-blue: #EFF6FF; /* Very light blue for backgrounds */
+  --navy-blue: #1E40AF; /* Navy blue for text */
   --white: #ffffff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --light-gray: #F8FAFC;
+  --medium-gray: #64748B;
+  --dark-gray: #334155;
+  --shadow: 0 4px 6px rgba(30, 58, 138, 0.1);
+  --shadow-lg: 0 10px 25px rgba(30, 58, 138, 0.15);
   --transition: all 0.3s ease;
   --border-radius: 0.5rem;
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Roboto", sans-serif;
 }
 
-/* Bootstrap Overrides */
+/* Bootstrap Overrides - Blue Primary */
 .btn-primary {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
-  color: var(--primary-blue);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--white);
   font-weight: 600;
   transition: var(--transition);
 }
 
 .btn-primary:hover {
-  background-color: rgba(255, 215, 0, 0.9);
-  border-color: rgba(255, 215, 0, 0.9);
-  color: var(--primary-blue);
+  background-color: var(--navy-blue);
+  border-color: var(--navy-blue);
+  color: var(--white);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
 .btn-outline-primary {
-  border-color: var(--primary-yellow);
-  color: var(--primary-yellow);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
   background-color: transparent;
   font-weight: 600;
 }
 
 .btn-outline-primary:hover {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
-  color: var(--primary-blue);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--white);
 }
 
 .btn-outline-secondary {
-  border-color: var(--primary-blue);
-  color: var(--primary-blue);
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
   background-color: transparent;
   font-weight: 500;
 }
 
 .btn-outline-secondary:hover {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
   color: var(--primary-blue);
 }
 
@@ -88,7 +91,7 @@ h6 {
   margin: 0 auto;
 }
 
-/* Navigation */
+/* Navigation - Blue Theme */
 .navbar {
   background-color: transparent;
   transition: var(--transition);
@@ -96,7 +99,7 @@ h6 {
 }
 
 .navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(30, 58, 138, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
@@ -111,7 +114,7 @@ h6 {
 .brand-logo {
   width: 40px;
   height: 40px;
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -127,7 +130,7 @@ h6 {
 }
 
 .navbar.scrolled .brand-text {
-  color: var(--primary-blue);
+  color: var(--white);
 }
 
 .nav-link {
@@ -138,11 +141,11 @@ h6 {
 }
 
 .navbar.scrolled .nav-link {
-  color: var(--primary-blue) !important;
+  color: var(--white) !important;
 }
 
 .nav-link:hover {
-  color: var(--primary-yellow) !important;
+  color: var(--accent-yellow) !important;
 }
 
 .navbar-toggler {
@@ -155,10 +158,10 @@ h6 {
 }
 
 .navbar.scrolled .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 51, 102, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Hero Section */
+/* Hero Section - Blue Gradient Background */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -167,6 +170,7 @@ h6 {
   justify-content: center;
   overflow: hidden;
   color: var(--white);
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
 }
 
 .hero-section .container {
@@ -187,6 +191,7 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.3;
 }
 
 .hero-overlay {
@@ -195,14 +200,14 @@ h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.7));
   z-index: 2;
 }
 
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
-  color: var(--primary-yellow);
+  color: var(--white);
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -210,7 +215,7 @@ h6 {
 .hero-subtitle {
   font-size: clamp(1.25rem, 3vw, 2rem);
   color: var(--primary-blue);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--accent-yellow);
   display: inline-block;
   padding: 1rem 2rem;
   border-radius: var(--border-radius);
@@ -229,7 +234,7 @@ h6 {
   border-radius: var(--border-radius);
 }
 
-/* Scroll Indicator */
+/* Scroll Indicator - Yellow Accent */
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -242,7 +247,7 @@ h6 {
 .scroll-mouse {
   width: 24px;
   height: 40px;
-  border: 2px solid var(--primary-yellow);
+  border: 2px solid var(--accent-yellow);
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -252,7 +257,7 @@ h6 {
 .scroll-wheel {
   width: 4px;
   height: 12px;
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
   border-radius: 2px;
   animation: pulse 2s infinite;
 }
@@ -283,9 +288,9 @@ h6 {
   }
 }
 
-/* Services Section */
+/* Services Section - Light Blue Background */
 .services-section {
-  background-color: var(--light-gray);
+  background-color: var(--light-blue);
   padding: 5rem 0;
 }
 
@@ -303,7 +308,7 @@ h6 {
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--primary-yellow);
+  border-color: var(--primary-blue);
 }
 
 .service-icon {
@@ -325,7 +330,7 @@ h6 {
 }
 
 .service-card:hover .service-title {
-  color: var(--primary-yellow);
+  color: var(--secondary-blue);
 }
 
 .service-description {
@@ -358,15 +363,16 @@ h6 {
 }
 
 .filter-btn:hover {
-  background-color: var(--primary-blue);
+  background-color: var(--secondary-blue);
+  border-color: var(--secondary-blue);
   color: var(--white);
   transform: translateY(-2px);
 }
 
 .filter-btn.active {
-  background-color: var(--primary-yellow);
-  border-color: var(--primary-yellow);
-  color: var(--primary-blue);
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--white);
   box-shadow: var(--shadow);
 }
 
@@ -422,8 +428,8 @@ h6 {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 51, 102, 0.9),
-    rgba(255, 215, 0, 0.8)
+    rgba(30, 58, 138, 0.9),
+    rgba(59, 130, 246, 0.8)
   );
   display: flex;
   align-items: center;
@@ -452,7 +458,7 @@ h6 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
 }
 
 .project-info p {
@@ -462,7 +468,7 @@ h6 {
 }
 
 .project-category {
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
   color: var(--primary-blue);
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
@@ -550,9 +556,9 @@ h6 {
   transition: all 0.3s ease;
 }
 
-/* Trust Section */
+/* Trust Section - Deep Blue Background */
 .trust-section {
-  background-color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--navy-blue));
   color: var(--white);
   padding: 5rem 0;
 }
@@ -560,7 +566,7 @@ h6 {
 .project-counter {
   font-size: clamp(4rem, 8vw, 6rem);
   font-weight: 800;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   margin-bottom: 1rem;
 }
 
@@ -588,6 +594,7 @@ h6 {
 .client-logo:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-5px);
+  background-color: var(--accent-yellow);
 }
 
 .testimonials-title {
@@ -598,7 +605,7 @@ h6 {
 .testimonial-card {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 2px solid var(--primary-yellow);
+  border: 2px solid var(--accent-yellow);
   border-radius: var(--border-radius);
   padding: 3rem;
   text-align: center;
@@ -614,7 +621,7 @@ h6 {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--primary-yellow);
+  border: 3px solid var(--accent-yellow);
 }
 
 .testimonial-quote {
@@ -626,7 +633,7 @@ h6 {
 
 .author-name {
   font-weight: 700;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   margin-bottom: 0.5rem;
 }
 
@@ -652,15 +659,15 @@ h6 {
 }
 
 .indicator.active {
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
 }
 
-/* Lead Generation Section */
+/* Lead Generation Section - Blue Gradient */
 .lead-section {
   background: linear-gradient(
     135deg,
-    var(--primary-yellow),
-    rgba(255, 215, 0, 0.8)
+    var(--light-blue),
+    rgba(30, 58, 138, 0.1)
   );
   padding: 5rem 0;
 }
@@ -674,7 +681,7 @@ h6 {
 
 .lead-subtitle {
   font-size: 1.25rem;
-  color: var(--primary-blue);
+  color: var(--navy-blue);
   margin-bottom: 2rem;
 }
 
@@ -697,7 +704,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   font-weight: 700;
   margin-right: 1rem;
   font-size: 0.875rem;
@@ -712,7 +719,7 @@ h6 {
 }
 
 .form-header {
-  background-color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
   color: var(--white);
   padding: 1.5rem;
   text-align: center;
@@ -738,8 +745,8 @@ h6 {
 
 .form-control:focus,
 .form-select:focus {
-  border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+  border-color: var(--secondary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
 }
 
 .form-label {
@@ -748,15 +755,15 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
-/* Footer */
+/* Footer - Deep Blue */
 .footer {
-  background-color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--navy-blue));
   color: var(--white);
 }
 
 .newsletter-section {
-  background-color: var(--primary-yellow);
-  color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+  color: var(--white);
 }
 
 .newsletter-title {
@@ -778,13 +785,19 @@ h6 {
 }
 
 .newsletter-form .form-control {
-  border: 2px solid var(--primary-blue);
+  border: 2px solid var(--white);
 }
 
 .newsletter-form .btn {
-  border: 2px solid var(--primary-blue);
-  background-color: var(--primary-blue);
-  color: var(--white);
+  border: 2px solid var(--accent-yellow);
+  background-color: var(--accent-yellow);
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.newsletter-form .btn:hover {
+  background-color: rgba(252, 211, 77, 0.9);
+  border-color: rgba(252, 211, 77, 0.9);
 }
 
 .footer-main {
@@ -794,7 +807,7 @@ h6 {
 .footer-brand {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   margin-bottom: 1rem;
 }
 
@@ -814,7 +827,7 @@ h6 {
 }
 
 .contact-icon {
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   margin-right: 1rem;
   font-size: 1.125rem;
 }
@@ -822,7 +835,7 @@ h6 {
 .footer-heading {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
   margin-bottom: 1rem;
 }
 
@@ -843,7 +856,7 @@ h6 {
 }
 
 .footer-links a:hover {
-  color: var(--primary-yellow);
+  color: var(--accent-yellow);
 }
 
 .footer-divider {
@@ -864,7 +877,7 @@ h6 {
 .social-link {
   width: 40px;
   height: 40px;
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-yellow);
   color: var(--primary-blue);
   border-radius: 50%;
   display: flex;
@@ -875,11 +888,11 @@ h6 {
 }
 
 .social-link:hover {
-  background-color: rgba(255, 215, 0, 0.9);
+  background-color: rgba(252, 211, 77, 0.9);
   transform: translateY(-2px);
 }
 
-/* Floating Quote Button */
+/* Floating Quote Button - Blue Theme */
 .floating-quote-btn {
   position: fixed;
   right: 1rem;
@@ -894,6 +907,12 @@ h6 {
   font-weight: 700;
   box-shadow: var(--shadow-lg);
   font-size: 1.125rem;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  border-color: var(--primary-blue);
+}
+
+.floating-quote-btn .btn:hover {
+  background: linear-gradient(135deg, var(--navy-blue), var(--primary-blue));
 }
 
 /* Sidebar Form */
@@ -1006,4 +1025,37 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Additional Blue Theme Enhancements */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.service-card {
+  position: relative;
+}
+
+/* Blue accent for active navigation */
+.nav-link.active {
+  color: var(--accent-yellow) !important;
+  font-weight: 600;
+}
+
+/* Enhanced button hover effects */
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(30, 58, 138, 0.5);
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(30, 58, 138, 0.5);
 }
