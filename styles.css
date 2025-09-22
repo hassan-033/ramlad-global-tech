@@ -1,13 +1,13 @@
 /* Custom Variables - Updated to Blue Dominant Theme */
 :root {
-  --primary-blue: #1E3A8A; /* Deep blue as primary */
-  --secondary-blue: #3B82F6; /* Lighter blue for accents */
-  --accent-yellow: #FCD34D; /* Yellow as accent color */
-  --light-blue: #EFF6FF; /* Very light blue for backgrounds */
-  --navy-blue: #1E40AF; /* Navy blue for text */
+  --primary-blue: #1e3a8a; /* Deep blue as primary */
+  --secondary-blue: #3b82f6; /* Lighter blue for accents */
+  --accent-yellow: #fcd34d; /* Yellow as accent color */
+  --light-blue: #eff6ff; /* Very light blue for backgrounds */
+  --navy-blue: #1e40af; /* Navy blue for text */
   --white: #ffffff;
-  --light-gray: #F8FAFC;
-  --medium-gray: #64748B;
+  --light-gray: #f8fafc;
+  --medium-gray: #64748b;
   --dark-gray: #334155;
   --shadow: 0 4px 6px rgba(30, 58, 138, 0.1);
   --shadow-lg: 0 10px 25px rgba(30, 58, 138, 0.15);
@@ -170,7 +170,11 @@ h6 {
   justify-content: center;
   overflow: hidden;
   color: var(--white);
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
 }
 
 .hero-section .container {
@@ -191,7 +195,6 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
 }
 
 .hero-overlay {
@@ -200,7 +203,11 @@ h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.7));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.8),
+    rgba(59, 130, 246, 0.7)
+  );
   z-index: 2;
 }
 
@@ -343,6 +350,96 @@ h6 {
 .projects-section {
   background-color: var(--white);
   padding: 5rem 0;
+}
+
+/* About Section (new) */
+.about-section {
+  /* keep the about area visually integrated with the page; use subtle white card on light background */
+  background-color: transparent;
+  padding: 4.5rem 0;
+  color: var(--dark-gray);
+}
+
+.about-inner {
+  background: var(--white);
+  border-radius: calc(var(--border-radius) * 1.1);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.about-image-card {
+  max-width: 520px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: calc(var(--border-radius) * 0.9);
+  box-shadow: var(--shadow);
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-lead {
+  font-size: 1.125rem;
+  color: var(--dark-gray);
+  margin-bottom: 0.75rem;
+}
+
+.about-text {
+  color: var(--medium-gray);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-stat-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.about-stat {
+  flex: 1 1 0;
+  background: linear-gradient(135deg, var(--white), var(--light-blue));
+  border-radius: 0.75rem;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--medium-gray);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .about-inner {
+    padding: 1.25rem;
+  }
+
+  .about-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image-card {
+    max-width: 100%;
+  }
 }
 
 .project-filters {
@@ -719,7 +816,11 @@ h6 {
 }
 
 .form-header {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
   color: var(--white);
   padding: 1.5rem;
   text-align: center;
@@ -762,7 +863,11 @@ h6 {
 }
 
 .newsletter-section {
-  background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--secondary-blue),
+    var(--primary-blue)
+  );
   color: var(--white);
 }
 
@@ -907,7 +1012,11 @@ h6 {
   font-weight: 700;
   box-shadow: var(--shadow-lg);
   font-size: 1.125rem;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
   border-color: var(--primary-blue);
 }
 
@@ -1029,13 +1138,17 @@ html {
 
 /* Additional Blue Theme Enhancements */
 .service-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(
+    90deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
