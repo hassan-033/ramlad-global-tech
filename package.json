@@ -1,0 +1,23 @@
+{
+  "name": "ramlad-global-tech",
+  "version": "1.0.0",
+  "description": "A modern, responsive website for Ramlad Global Technologies - a leading provider of solar energy solutions and advanced security systems.",
+  "main": "import nodemailer from 'nodemailer';.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassan-033/ramlad-global-tech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassan-033/ramlad-global-tech/issues"
+  },
+  "homepage": "https://github.com/hassan-033/ramlad-global-tech#readme",
+  "dependencies": {
+    "nodemailer": "^7.0.9"
+  }
+}

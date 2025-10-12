@@ -174,17 +174,33 @@ function initViewMoreProjects() {
         '<span class="spinner-border spinner-border-sm me-2"></span>Loading More Projects...';
       this.disabled = true;
 
-      // Simulate loading more projects
+      // Show additional projects that were hidden
       setTimeout(() => {
-        addMoreProjects();
+        const additionalProjects = document.querySelectorAll(
+          ".additional-project"
+        );
 
-        // Reset button
-        this.innerHTML = originalText;
-        this.disabled = false;
+        additionalProjects.forEach((project, index) => {
+          setTimeout(() => {
+            project.style.display = "block";
+            project.style.opacity = "0";
+            project.style.transform = "translateY(20px)";
 
-        // Show success message
-        showSuccessMessage("More projects loaded successfully!");
-      }, 1500);
+            // Animate in
+            setTimeout(() => {
+              project.style.transition = "all 0.5s ease";
+              project.style.opacity = "1";
+              project.style.transform = "translateY(0)";
+            }, 50);
+          }, index * 200);
+        });
+
+        // Hide the button after showing all projects
+        setTimeout(() => {
+          this.style.display = "none";
+          showSuccessMessage("All projects loaded successfully!");
+        }, additionalProjects.length * 200 + 500);
+      }, 1000);
     });
   }
 }
@@ -532,6 +548,132 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Project card clicked:", card);
     });
   });
+});
+
+// Form submission handling
+document.addEventListener("DOMContentLoaded", function () {
+  // Main contact form
+  const mainForm = document.getElementById("contactForm");
+  if (mainForm) {
+    mainForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      submitForm(this, "main_contact");
+    });
+  }
+
+  // Sidebar quick quote form
+  const sidebarForm = document.getElementById("sidebarQuoteForm");
+  if (sidebarForm) {
+    sidebarForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      submitForm(this, "quick_quote");
+    });
+  }
+
+  // Handle form submissions
+  function submitForm(form, formType) {
+    // Show loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML =
+      '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+
+    // Create form data
+    const formData = new FormData(form);
+    formData.append("form_type", formType);
+
+    // Send AJAX request
+    fetch("process-form.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Create alert message
+        const alertDiv = document.createElement("div");
+        alertDiv.className =
+          data.status === "success"
+            ? "alert alert-success mt-3"
+            : "alert alert-danger mt-3";
+        alertDiv.textContent = data.message;
+
+        // Show alert message
+        form.querySelector(".form-response").innerHTML = "";
+        form.querySelector(".form-response").appendChild(alertDiv);
+
+        // Reset form on success
+        if (data.status === "success") {
+          form.reset();
+        }
+
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        // Hide alert after 5 seconds
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+
+        // Show error message
+        const alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger mt-3";
+        alertDiv.textContent = "An error occurred. Please try again later.";
+
+        form.querySelector(".form-response").innerHTML = "";
+        form.querySelector(".form-response").appendChild(alertDiv);
+
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      });
+  }
+
+  // View More Projects button functionality
+  const viewMoreBtn = document.getElementById("viewMoreBtn");
+  if (viewMoreBtn) {
+    viewMoreBtn.addEventListener("click", function () {
+      const hiddenProjects = document.querySelectorAll(".additional-project");
+
+      hiddenProjects.forEach((project) => {
+        project.style.display = "block";
+        setTimeout(() => {
+          project.style.opacity = "1";
+        }, 10);
+      });
+
+      // Hide the button after revealing all projects
+      this.style.display = "none";
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch("/api/process-form", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        alert(result.message);
+        if (result.status === "success") form.reset();
+      } catch (err) {
+        alert("Network error. Please try again.");
+      }
+    });
+  }
 });
 
 // Utility Functions

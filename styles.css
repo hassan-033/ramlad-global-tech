@@ -416,12 +416,12 @@ h6 {
   .about-section {
     padding: 2.5rem 0 !important;
   }
-  
+
   .about-content {
     padding-left: 0 !important;
     margin-top: 1rem;
   }
-  
+
   .about-image {
     height: 300px;
   }
@@ -431,15 +431,15 @@ h6 {
   .about-section {
     padding: 2rem 0 !important;
   }
-  
+
   .about-image {
     height: 250px;
   }
-  
+
   .section-title {
     font-size: 1.75rem;
   }
-  
+
   .about-lead {
     font-size: 1rem;
   }
@@ -449,7 +449,7 @@ h6 {
   .d-flex.gap-2 {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }
@@ -939,14 +939,30 @@ h6 {
 
 .contact-item {
   display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
-.contact-icon {
-  color: var(--accent-yellow);
-  margin-right: 1rem;
-  font-size: 1.125rem;
+.contact-item i {
+  min-width: 20px;
+  margin-top: 5px;
+  color: var(--primary-color);
+  margin-right: 10px;
+}
+
+.contact-item a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.contact-item .fab.fa-whatsapp {
+  color: #25d366;
 }
 
 .footer-heading {
