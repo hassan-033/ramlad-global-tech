@@ -127,6 +127,25 @@ h6 {
 .brand-text {
   color: var(--white);
   transition: var(--transition);
+  font-size: 1rem;
+}
+
+@media (min-width: 576px) {
+  .brand-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .brand-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .brand-text {
+    font-size: 1.8rem;
+  }
 }
 
 .navbar.scrolled .brand-text {
