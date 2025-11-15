@@ -57,7 +57,7 @@ function initTestimonialCarousel() {
       name: "Sarah Chen",
       company: "Chen Logistics",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-14947901087S55-2616b612b786?w=100&h=100&fit=crop&crop=face",
       quote:
         "The CCTV and security systems they installed exceeded our expectations. Professional service from start to finish.",
     },
@@ -198,7 +198,7 @@ function initViewMoreProjects() {
         // Hide the button after showing all projects
         setTimeout(() => {
           this.style.display = "none";
-          showSuccessMessage("All projects loaded successfully!");
+          showAlert("All projects loaded successfully!", "success");
         }, additionalProjects.length * 200 + 500);
       }, 1000);
     });
@@ -283,7 +283,7 @@ function createProjectElement(project) {
 
   div.innerHTML = `
         <div class="project-card">
-            <div class="project-image">
+            <div class.project-image">
                 <img src="${project.image}" alt="${project.title}">
                 <div class="project-overlay">
                     <div class="project-info">
@@ -331,107 +331,82 @@ function initProjectCounter() {
 
 // Form Handling
 function initForms() {
-  // Main quote form
   const mainForm = document.getElementById("mainQuoteForm");
   if (mainForm) {
-    mainForm.addEventListener("submit", handleMainFormSubmit);
+    mainForm.addEventListener("submit", handleFormSubmit);
   }
 
-  // Sidebar quote form
   const sidebarForm = document.getElementById("sidebarQuoteForm");
   if (sidebarForm) {
-    sidebarForm.addEventListener("submit", handleSidebarFormSubmit);
+    sidebarForm.addEventListener("submit", handleFormSubmit);
   }
 
-  // Newsletter form
   const newsletterForm = document.getElementById("newsletterForm");
   if (newsletterForm) {
-    newsletterForm.addEventListener("submit", handleNewsletterSubmit);
+    newsletterForm.addEventListener("submit", handleFormSubmit);
   }
 }
 
-function handleMainFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const jsonData = Object.fromEntries(data.entries());
 
-  const formData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    service: document.getElementById("service").value,
-    message: document.getElementById("message").value,
-  };
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML =
+    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
 
-  // Simulate form submission
-  console.log("Main form submitted:", formData);
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: JSON.stringify(jsonData),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
 
-  // Show success message
-  showSuccessMessage("Thank you for your interest! We will contact you soon.");
-
-  // Reset form
-  document.getElementById("mainQuoteForm").reset();
-}
-
-function handleSidebarFormSubmit(e) {
-  e.preventDefault();
-
-  const formData = {
-    name: document.getElementById("sidebarName").value,
-    email: document.getElementById("sidebarEmail").value,
-    phone: document.getElementById("sidebarPhone").value,
-    service: document.getElementById("sidebarService").value,
-  };
-
-  // Simulate form submission
-  console.log("Sidebar form submitted:", formData);
-
-  // Show success message
-  showSuccessMessage("Thank you for your request! We will contact you soon.");
-
-  // Reset form and close sidebar
-  document.getElementById("sidebarQuoteForm").reset();
-  const offcanvas = bootstrap.Offcanvas.getInstance(
-    document.getElementById("sidebarForm")
-  );
-  if (offcanvas) {
-    offcanvas.hide();
+    if (response.ok) {
+      showAlert("Thank you! Your submission has been received!", "success");
+      form.reset();
+      if (form.id === 'sidebarQuoteForm') {
+        const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById("sidebarForm"));
+        if (offcanvas) {
+          offcanvas.hide();
+        }
+      }
+    } else {
+      const responseData = await response.json();
+      const errorMessage = responseData.errors ? responseData.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
+      showAlert(errorMessage, "danger");
+    }
+  } catch (error) {
+    showAlert("Network error. Please try again later.", "danger");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
   }
 }
 
-function handleNewsletterSubmit(e) {
-  e.preventDefault();
-
-  const email = document.getElementById("newsletterEmail").value;
-
-  // Simulate newsletter subscription
-  console.log("Newsletter subscription:", email);
-
-  // Show success message
-  showSuccessMessage("Thank you for subscribing to our newsletter!");
-
-  // Reset form
-  document.getElementById("newsletterForm").reset();
-}
-
-function showSuccessMessage(message) {
-  // Create and show a temporary success alert
+function showAlert(message, type) {
   const alertDiv = document.createElement("div");
-  alertDiv.className =
-    "alert alert-success alert-dismissible fade show position-fixed";
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
   alertDiv.style.top = "100px";
   alertDiv.style.right = "20px";
   alertDiv.style.zIndex = "9999";
   alertDiv.style.minWidth = "300px";
   alertDiv.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-
+    ${message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  `;
   document.body.appendChild(alertDiv);
-
-  // Auto-remove after 5 seconds
   setTimeout(() => {
-    if (alertDiv.parentNode) {
-      alertDiv.parentNode.removeChild(alertDiv);
+    const bootstrapAlert = new bootstrap.Alert(alertDiv);
+    if (bootstrapAlert) {
+      bootstrapAlert.close();
     }
   }, 5000);
 }
@@ -548,132 +523,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Project card clicked:", card);
     });
   });
-});
-
-// Form submission handling
-document.addEventListener("DOMContentLoaded", function () {
-  // Main contact form
-  const mainForm = document.getElementById("contactForm");
-  if (mainForm) {
-    mainForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      submitForm(this, "main_contact");
-    });
-  }
-
-  // Sidebar quick quote form
-  const sidebarForm = document.getElementById("sidebarQuoteForm");
-  if (sidebarForm) {
-    sidebarForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      submitForm(this, "quick_quote");
-    });
-  }
-
-  // Handle form submissions
-  function submitForm(form, formType) {
-    // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML =
-      '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-
-    // Create form data
-    const formData = new FormData(form);
-    formData.append("form_type", formType);
-
-    // Send AJAX request
-    fetch("process-form.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Create alert message
-        const alertDiv = document.createElement("div");
-        alertDiv.className =
-          data.status === "success"
-            ? "alert alert-success mt-3"
-            : "alert alert-danger mt-3";
-        alertDiv.textContent = data.message;
-
-        // Show alert message
-        form.querySelector(".form-response").innerHTML = "";
-        form.querySelector(".form-response").appendChild(alertDiv);
-
-        // Reset form on success
-        if (data.status === "success") {
-          form.reset();
-        }
-
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-
-        // Hide alert after 5 seconds
-        setTimeout(() => {
-          alertDiv.remove();
-        }, 5000);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-
-        // Show error message
-        const alertDiv = document.createElement("div");
-        alertDiv.className = "alert alert-danger mt-3";
-        alertDiv.textContent = "An error occurred. Please try again later.";
-
-        form.querySelector(".form-response").innerHTML = "";
-        form.querySelector(".form-response").appendChild(alertDiv);
-
-        // Reset button state
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-      });
-  }
-
-  // View More Projects button functionality
-  const viewMoreBtn = document.getElementById("viewMoreBtn");
-  if (viewMoreBtn) {
-    viewMoreBtn.addEventListener("click", function () {
-      const hiddenProjects = document.querySelectorAll(".additional-project");
-
-      hiddenProjects.forEach((project) => {
-        project.style.display = "block";
-        setTimeout(() => {
-          project.style.opacity = "1";
-        }, 10);
-      });
-
-      // Hide the button after revealing all projects
-      this.style.display = "none";
-    });
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch("/api/process-form", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        alert(result.message);
-        if (result.status === "success") form.reset();
-      } catch (err) {
-        alert("Network error. Please try again.");
-      }
-    });
-  }
 });
 
 // Utility Functions

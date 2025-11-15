@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/hassan-033/ramlad-global-tech/issues"
   },
-  "homepage": "https://github.com/hassan-033/ramlad-global-tech#readme",
-  "dependencies": {
-    "nodemailer": "^7.0.9"
-  }
+  "homepage": "https://github.com/hassan-033/ramlad-global-tech#readme"
 }
