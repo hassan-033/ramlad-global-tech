@@ -95,7 +95,7 @@ h6 {
 .navbar {
   background-color: transparent;
   transition: var(--transition);
-  padding: 1rem 0;
+  padding: 0.25rem 0;
 }
 
 .navbar.scrolled {
@@ -239,11 +239,11 @@ h6 {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--primary-blue);
   background-color: var(--accent-yellow);
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem;
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
   font-weight: 600;
@@ -365,10 +365,87 @@ h6 {
   line-height: 1.6;
 }
 
-/* Projects Section */
+/* Projects Section - Enhanced */
 .projects-section {
+  background-color: var(--light-gray);
+}
+
+.project-filters .filter-btn {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.project-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card .card-body {
+  padding: 1.5rem;
+}
+
+.project-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+/* Blog Section - Enhanced */
+.blog-section {
   background-color: var(--white);
-  padding: 5rem 0;
+}
+
+.blog-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-card .card-body {
+  padding: 1.5rem;
+}
+
+.blog-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.blog-card .btn-link {
+  color: var(--secondary-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-card .btn-link:hover {
+  color: var(--primary-blue);
 }
 
 /* About Section Improvements */
