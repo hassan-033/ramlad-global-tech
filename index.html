@@ -52,6 +52,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
 
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="Images/60b03a50-509f-45e1-b8dc-213efeaaab7c.webp">
+
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
     {
@@ -59,6 +62,7 @@
       "@type": "LocalBusiness",
       "name": "Ramlad Global Technologies",
       "image": "https://ramlad-global-tech.vercel.app/Images/assets/android-chrome-192x192.png",
+      "logo": "https://ramlad-global-tech.vercel.app/Images/assets/android-chrome-192x192.png",
       "@id": "",
       "url": "https://ramlad-global-tech.vercel.app/",
       "telephone": "+2349025869850",
@@ -139,7 +143,9 @@
           <img
             src="Images/assets/android-chrome-192x192.png"
             alt="Ramlad Global Technologies Logo"
-            style="height: 3.5rem"
+            width="192"
+            height="192"
+            style="height: 3.5rem; width: auto;"
             class="me-2"
           />
           <span class="brand-text">Ramlad Global <br> Technologies</span>
@@ -181,8 +187,11 @@
     <section id="home" class="hero-section">
       <div class="hero-background">
         <img
-          src="Images/60b03a50-509f-45e1-b8dc-213efeaaab7c.JPG"
+          src="Images/60b03a50-509f-45e1-b8dc-213efeaaab7c.webp"
           alt="Ramlad Global Technologies engineer standing with a Chrisolar inverter and battery bank system."
+          width="1920"
+          height="2560"
+          fetchpriority="high"
           class="hero-image"
         />
         <div class="hero-overlay"></div>
@@ -388,8 +397,11 @@
           <div class="col-lg-5">
             <div class="about-image-wrapper">
               <img
-                src="Images/hero-img.JPG"
+                src="Images/hero-img.webp"
                 alt="Founder Olaleru Abdulrahman inspecting a solar power installation."
+                width="1920"
+                height="2560"
+                loading="lazy"
                 class="img-fluid about-image rounded-3"
               />
             </div>
@@ -490,7 +502,7 @@
           <!-- Project 1 -->
           <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="solar">
             <div class="card project-card h-100">
-              <img src="Images/img1.JPG" class="card-img-top" alt="Project 1">
+              <img src="Images/img1.webp" class="card-img-top" alt="Project 1" width="1920" height="2560" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">Commercial Solar Installation</h5>
                 <p class="card-text">Large-scale solar panel system for a commercial building, reducing energy costs by 70%.</p>
@@ -501,7 +513,7 @@
           <!-- Project 2 -->
           <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="security">
             <div class="card project-card h-100">
-              <img src="Images/f3d95c49-6094-475f-a83b-9ba527b1c84e.JPG" class="card-img-top" alt="Project 2">
+              <img src="Images/f3d95c49-6094-475f-a83b-9ba527b1c84e.webp" class="card-img-top" alt="Project 2" width="1920" height="2560" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">Advanced CCTV System</h5>
                 <p class="card-text">Comprehensive CCTV surveillance system for a residential estate, enhancing security and peace of mind.</p>
@@ -512,7 +524,7 @@
           <!-- Project 3 -->
           <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="automation">
             <div class="card project-card h-100">
-              <img src="Images/Electric Fence Wire With Solar Backup.JPG" class="card-img-top" alt="Project 3">
+              <img src="Images/Electric Fence Wire With Solar Backup.webp" class="card-img-top" alt="Project 3" width="3456" height="4608" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">Automated Gate & Fence</h5>
                 <p class="card-text">Smart gate automation and solar-powered electric fence for a private residence.</p>
@@ -523,7 +535,7 @@
            <!-- Project 4 -->
           <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="solar">
             <div class="card project-card h-100">
-              <img src="Images/1000130507.JPG" class="card-img-top" alt="Project 4">
+              <img src="Images/1000130507.webp" class="card-img-top" alt="Project 4" width="720" height="1611" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">Residential Solar Power</h5>
                 <p class="card-text">Complete solar energy system with battery backup for uninterrupted power supply in a family home.</p>
@@ -534,7 +546,7 @@
           <!-- Project 5 -->
            <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="security">
             <div class="card project-card h-100">
-              <img src="Images/Electric Fence Wire.JPG" class="card-img-top" alt="Project 5">
+              <img src="Images/Electric Fence Wire.webp" class="card-img-top" alt="Project 5" width="3456" height="4608" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">High-Security Electric Fence</h5>
                 <p class="card-text">Professional electric fence wire installation for maximum perimeter security at an industrial site.</p>
@@ -545,7 +557,7 @@
           <!-- Project 6 -->
           <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="solar">
             <div class="card project-card h-100">
-              <img src="Images/img7.jpg" class="card-img-top" alt="Project 6">
+              <img src="Images/img7.webp" class="card-img-top" alt="Project 6" width="1000" height="1000" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">Solar Street Lighting</h5>
                 <p class="card-text">Energy-efficient solar street light installation for a community, providing sustainable illumination.</p>
@@ -571,36 +583,36 @@
         <div class="row">
           <!-- Blog Post 1 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card blog-card h-100">
-              <img src="Images/a63e61cb-9ec1-4c43-b5dc-3ed66a99e7a0.JPG" class="card-img-top" alt="Blog Post 1">
+            <article class="card blog-card h-100">
+              <img src="Images/a63e61cb-9ec1-4c43-b5dc-3ed66a99e7a0.webp" class="card-img-top" alt="Blog Post 1" width="1920" height="2560" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">The Top 5 Benefits of Switching to Solar Energy</h5>
                 <p class="card-text">Discover how solar energy can reduce your electricity bills, increase your property value, and contribute to a greener planet.</p>
                 <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
               </div>
-            </div>
+            </article>
           </div>
           <!-- Blog Post 2 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card blog-card h-100">
-              <img src="Images/f5634adb-7bce-495a-aa51-5c621ff3ca44.JPG" class="card-img-top" alt="Blog Post 2">
+            <article class="card blog-card h-100">
+              <img src="Images/f5634adb-7bce-495a-aa51-5c621ff3ca44.webp" class="card-img-top" alt="Blog Post 2" width="765" height="1020" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">How to Choose the Right CCTV System for Your Home</h5>
                 <p class="card-text">A comprehensive guide to selecting the perfect CCTV system to protect your home and family, from camera types to storage options.</p>
                 <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
               </div>
-            </div>
+            </article>
           </div>
           <!-- Blog Post 3 -->
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card blog-card h-100">
-              <img src="Images/Handrailling.JPG" class="card-img-top" alt="Blog Post 3">
+            <article class="card blog-card h-100">
+              <img src="Images/Handrailling.webp" class="card-img-top" alt="Blog Post 3" width="720" height="1611" loading="lazy">
               <div class="card-body">
                 <h5 class="card-title">The Importance of Professional Electric Fence Installation</h5>
                 <p class="card-text">Learn why a professional installation is crucial for the effectiveness and safety of your electric fence security system.</p>
                 <a href="#" class="btn btn-link">Read More <i class="fas fa-arrow-right"></i></a>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>
@@ -871,16 +883,16 @@
               </p>
               <div class="d-flex align-items-center gap-3"></div>
               <div class="social-links d-flex align-items-center gap-3">
-                <a href="#" class="social-link"
+                <a href="#" class="social-link" aria-label="Facebook"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
-                <a href="#" class="social-link"
+                <a href="#" class="social-link" aria-label="LinkedIn"
                   ><i class="fab fa-linkedin-in"></i
                 ></a>
-                <a href="#" class="social-link"
+                <a href="#" class="social-link" aria-label="Instagram"
                   ><i class="fab fa-instagram"></i
                 ></a>
-                <a href="#" class="social-link"
+                <a href="#" class="social-link" aria-label="Twitter"
                   ><i class="fab fa-twitter"></i
                 ></a>
               </div>
@@ -968,6 +980,20 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template for Project Cards -->
+    <template id="project-card-template">
+      <div class="col-lg-4 col-md-6 mb-4 project-item filter-visible">
+        <div class="card project-card h-100">
+          <img src="" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-outline-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </template>
 
     <!-- Custom JavaScript -->
     <script src="script.js" defer></script>

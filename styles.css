@@ -450,7 +450,7 @@ h6 {
 
 /* About Section Improvements */
 .about-section {
-  background-color: #f8fafc;
+  background-color: var(--light-gray);
   padding: 3rem 0 !important; /* Reduced from 4.5rem */
 }
 
@@ -477,34 +477,34 @@ h6 {
 }
 
 .section-title {
-  color: var(--primary-blue, #1e3a8a);
+  color: var(--primary-blue);
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .about-lead {
-  color: #374151;
+  color: var(--dark-gray);
   line-height: 1.6;
 }
 
 .about-text {
-  color: #6b7280;
+  color: var(--medium-gray);
   line-height: 1.7;
 }
 
 .stat-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--light-blue);
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-blue, #1e3a8a);
+  border-color: var(--primary-blue);
 }
 
 .stat-number {
-  color: var(--primary-blue, #1e3a8a) !important;
+  color: var(--primary-blue) !important;
 }
 
 /* Responsive adjustments */
@@ -552,6 +552,10 @@ h6 {
 }
 .project-filters {
   margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .filter-btn {
@@ -1042,18 +1046,18 @@ h6 {
 .contact-item i {
   min-width: 20px;
   margin-top: 5px;
-  color: var(--primary-color);
+  color: var(--accent-yellow);
   margin-right: 10px;
 }
 
 .contact-item a {
-  color: #f8f9fa;
+  color: var(--light-gray);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .contact-item a:hover {
-  color: var(--primary-color);
+  color: var(--accent-yellow);
   text-decoration: underline;
 }
 
