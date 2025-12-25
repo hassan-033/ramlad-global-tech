@@ -46,28 +46,32 @@ function initNavbar() {
 function initTestimonialCarousel() {
   const testimonials = [
     {
-      name: "James Wilson",
-      company: "Wilson Manufacturing",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      name: "Yusmor Islamic Centre",
+      company: "Community Leader",
+      image: "Images/assets/android-chrome-192x192.png",
       quote:
-        "Ramlad Global Technologies transformed our facility with their solar solutions. We've reduced our energy costs by 60% in just 6 months!",
+        "Ramlad Global Technologies provided an excellent solar solution for our centre. We now have reliable power for all our activities.",
     },
     {
-      name: "Sarah Chen",
-      company: "Chen Logistics",
-      image:
-        "https://images.unsplash.com/photo-14947901087S55-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      name: "Mr Luqman",
+      company: "Homeowner",
+      image: "Images/assets/android-chrome-192x192.png",
       quote:
-        "The CCTV and security systems they installed exceeded our expectations. Professional service from start to finish.",
+        "I am very impressed with the CCTV installation. The team was professional and the system works perfectly.",
     },
     {
-      name: "Michael Rodriguez",
-      company: "Rodriguez Enterprises",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      name: "Mrs Olaleru",
+      company: "Community Member",
+      image: "Images/assets/android-chrome-192x192.png",
       quote:
-        "Outstanding solar street lighting installation. Our property is now well-lit and our electricity bills have dropped significantly.",
+        "The solar street lights have made our community much safer at night. Great service!",
+    },
+    {
+      name: "Dr Abdul Ganiyy Shokoya",
+      company: "Medical Professional",
+      image: "Images/assets/android-chrome-192x192.png",
+      quote:
+        "Their expertise in renewable energy is top-notch. Highly recommended for any solar projects.",
     },
   ];
 
@@ -277,24 +281,27 @@ function addMoreProjects() {
 }
 
 function createProjectElement(project) {
-  const div = document.createElement("div");
-  div.className = "col-lg-4 col-md-6 mb-4 project-item filter-visible";
+  const template = document.getElementById("project-card-template");
+  if (!template) {
+    console.error("Project card template not found!");
+    return document.createElement("div"); // Fallback
+  }
+
+  const clone = template.content.cloneNode(true);
+  const div = clone.querySelector(".project-item");
+
+  // Set attributes and content
   div.setAttribute("data-category", project.category);
 
-  div.innerHTML = `
-        <div class="project-card">
-            <div class.project-image">
-                <img src="${project.image}" alt="${project.title}">
-                <div class="project-overlay">
-                    <div class="project-info">
-                        <h4>${project.title}</h4>
-                        <p>${project.description}</p>
-                        <span class="project-category">${project.categoryDisplay}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+  const img = div.querySelector(".card-img-top");
+  img.src = project.image;
+  img.alt = project.title;
+
+  const title = div.querySelector(".card-title");
+  title.textContent = project.title;
+
+  const text = div.querySelector(".card-text");
+  text.textContent = project.description;
 
   return div;
 }
