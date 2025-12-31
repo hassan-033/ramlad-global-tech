@@ -44,6 +44,9 @@ function initNavbar() {
 
 // Testimonial Carousel
 function initTestimonialCarousel() {
+  const testimonialImage = document.getElementById("testimonialImage");
+  if (!testimonialImage) return;
+
   const testimonials = [
     {
       name: "Yusmor Islamic Centre",
@@ -309,6 +312,8 @@ function createProjectElement(project) {
 // Project Counter Animation
 function initProjectCounter() {
   const counter = document.getElementById("projectCounter");
+  if (!counter) return;
+
   let currentCount = 0;
   const targetCount = 50;
   const duration = 2000; // 2 seconds
